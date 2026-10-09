@@ -1,0 +1,493 @@
+
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="theme-color" content="#101010">
+  <title>Império de Dimitri | Portal Imperial</title>
+
+  <style>
+    :root {
+      --ouro: #e5bd62;
+      --fundo: #101010;
+      --painel: #1c1c1c;
+      --texto: #f5f5f5;
+      --cinza: #c3c3c3;
+    }
+
+    * {
+      box-sizing: border-box;
+      scroll-behavior: smooth;
+    }
+
+    body {
+      margin: 0;
+      background: var(--fundo);
+      color: var(--texto);
+      font-family: Arial, Helvetica, sans-serif;
+      line-height: 1.6;
+    }
+
+    header {
+      background: #080808;
+      border-bottom: 2px solid var(--ouro);
+      padding: 18px;
+      text-align: center;
+    }
+
+    .brasao {
+      color: var(--ouro);
+      font-size: 48px;
+    }
+
+    header h1 {
+      color: var(--ouro);
+      margin: 0;
+      font-size: clamp(23px, 5vw, 36px);
+    }
+
+    header p {
+      color: var(--cinza);
+      margin-bottom: 5px;
+    }
+
+    nav {
+      display: flex;
+      justify-content: center;
+      flex-wrap: wrap;
+      gap: 8px;
+      padding: 14px;
+      background: #151515;
+      position: sticky;
+      top: 0;
+      z-index: 10;
+      border-bottom: 1px solid #37302a;
+    }
+
+    nav a {
+      color: var(--ouro);
+      text-decoration: none;
+      padding: 8px 12px;
+      border-radius: 6px;
+    }
+
+    nav a:hover {
+      background: #302719;
+    }
+
+    main {
+      max-width: 1050px;
+      padding: 20px;
+      margin: auto;
+    }
+
+    .hero {
+      text-align: center;
+      padding: 48px 20px;
+      border: 1px solid #8d7138;
+      border-radius: 14px;
+      background: linear-gradient(135deg, #292116, #171717 65%);
+    }
+
+    .hero h2 {
+      font-size: clamp(30px, 7vw, 48px);
+      color: var(--ouro);
+      margin: 0 0 12px;
+    }
+
+    .hero p {
+      color: var(--cinza);
+      max-width: 650px;
+      margin: auto auto 22px;
+    }
+
+    .botao {
+      display: inline-block;
+      background: var(--ouro);
+      color: #17120a;
+      font-weight: bold;
+      text-decoration: none;
+      border: 0;
+      border-radius: 7px;
+      padding: 11px 17px;
+      cursor: pointer;
+      margin: 4px;
+    }
+
+    .botao:hover {
+      background: #f4d68f;
+    }
+
+    section {
+      margin-top: 38px;
+      scroll-margin-top: 90px;
+    }
+
+    h2.titulo {
+      color: var(--ouro);
+      border-bottom: 1px solid #54452b;
+      padding-bottom: 9px;
+    }
+
+    .grade {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(230px, 1fr));
+      gap: 15px;
+    }
+
+    .cartao, .lei {
+      background: var(--painel);
+      border: 1px solid #383838;
+      border-radius: 10px;
+      padding: 18px;
+    }
+
+    .cartao h3, .lei h3 {
+      color: var(--ouro);
+      margin-top: 0;
+    }
+
+    .cartao p, .lei p {
+      color: var(--cinza);
+    }
+
+    .etiqueta {
+      display: inline-block;
+      color: var(--ouro);
+      border: 1px solid #6e582c;
+      border-radius: 20px;
+      padding: 3px 9px;
+      font-size: 12px;
+      margin-bottom: 8px;
+    }
+
+    .aviso {
+      background: #211d14;
+      border-left: 4px solid var(--ouro);
+      padding: 14px;
+      color: #e3d6b9;
+      border-radius: 5px;
+      margin-top: 20px;
+    }
+
+    .pesquisa {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 10px;
+      margin: 18px 0;
+    }
+
+    input, select {
+      flex: 1;
+      min-width: 180px;
+      background: #202020;
+      color: white;
+      border: 1px solid #555;
+      padding: 12px;
+      border-radius: 7px;
+      font-size: 15px;
+    }
+
+    .leis {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(270px, 1fr));
+      gap: 14px;
+    }
+
+    .lei summary {
+      color: var(--ouro);
+      cursor: pointer;
+      font-weight: bold;
+    }
+
+    .lei details {
+      margin-top: 12px;
+    }
+
+    #semResultados {
+      display: none;
+      color: var(--cinza);
+      padding: 20px;
+    }
+
+    footer {
+      margin-top: 45px;
+      padding: 28px 15px;
+      text-align: center;
+      background: #080808;
+      border-top: 2px solid var(--ouro);
+      color: var(--cinza);
+    }
+
+    footer strong {
+      color: var(--ouro);
+    }
+  </style>
+</head>
+
+<body>
+
+<header>
+  <div class="brasao">♛</div>
+  <h1>IMPÉRIO DE DIMITRI</h1>
+  <p>Portal Imperial de Leis, Decretos e Instituições</p>
+</header>
+
+<nav>
+  <a href="#inicio">Início</a>
+  <a href="#instituicoes">Instituições</a>
+  <a href="#leis">Leis</a>
+  <a href="#economia">Economia</a>
+  <a href="#sobre">Sobre</a>
+</nav>
+
+<main>
+
+  <div class="hero" id="inicio">
+    <span class="etiqueta">PORTAL LEGISLATIVO FICTÍCIO</span>
+    <h2>Salve o Império!</h2>
+    <p>
+      Consulte as leis, os decretos, as instituições e os projetos
+      do universo fictício criado para o Império de Dimitri.
+    </p>
+    <a class="botao" href="#leis">Consultar legislação</a>
+    <a class="botao" href="#instituicoes">Conhecer instituições</a>
+  </div>
+
+  <div class="aviso">
+    <strong>Aviso:</strong> este portal é parte de uma história fictícia.
+    Seus decretos não são leis oficiais do Brasil e não possuem validade jurídica real.
+  </div>
+
+  <section id="instituicoes">
+    <h2 class="titulo">Instituições imperiais</h2>
+
+    <div class="grade">
+      <article class="cartao">
+        <h3>♛ Conselho Imperial</h3>
+        <p>Organiza propostas, debates, decisões e registros legislativos do Império.</p>
+      </article>
+
+      <article class="cartao">
+        <h3>🏦 Banco Imperial</h3>
+        <p>Administra simbolicamente a moeda Cruzel e os registros financeiros fictícios.</p>
+      </article>
+
+      <article class="cartao">
+        <h3>⚖️ Tribunal Imperial</h3>
+        <p>Instituição imaginária responsável por interpretar as leis dentro da história.</p>
+      </article>
+
+      <article class="cartao">
+        <h3>🤝 Bolsa-Ajuda</h3>
+        <p>Programa fictício de assistência para alimentação, educação e necessidades essenciais.</p>
+      </article>
+
+      <article class="cartao">
+        <h3>📜 Arquivo Imperial</h3>
+        <p>Preserva documentos, decretos, tratados e registros históricos do universo fictício.</p>
+      </article>
+
+      <article class="cartao">
+        <h3>🛡️ Guarda Imperial</h3>
+        <p>Instituição fictícia responsável pela proteção das instalações imperiais na narrativa.</p>
+      </article>
+    </div>
+  </section>
+
+  <section id="leis">
+    <h2 class="titulo">Legislação imperial</h2>
+    <p>Pesquise por nome, número ou assunto para encontrar um documento.</p>
+
+    <div class="pesquisa">
+      <input
+        type="search"
+        id="busca"
+        placeholder="Pesquisar leis e decretos..."
+        aria-label="Pesquisar legislação"
+      >
+
+      <select id="categoria" aria-label="Filtrar por categoria">
+        <option value="">Todas as categorias</option>
+        <option value="Economia">Economia</option>
+        <option value="Assistência">Assistência social</option>
+        <option value="Direitos">Direitos e liberdades</option>
+        <option value="Segurança">Segurança</option>
+        <option value="Cultura">Cultura</option>
+      </select>
+    </div>
+
+    <div class="leis" id="listaLeis">
+
+      <article class="lei" data-categoria="Economia">
+        <span class="etiqueta">Decreto nº 001</span>
+        <h3>Criação da moeda Cruzel</h3>
+        <p>Institui a moeda oficial do universo fictício.</p>
+        <details>
+          <summary>Ler decreto completo</summary>
+          <p><strong>Art. 1º</strong> — Fica criada a moeda fictícia Cruzel, identificada pelo código CZL.</p>
+          <p><strong>Art. 2º</strong> — O Banco Imperial manterá os registros simbólicos de valores e circulação.</p>
+          <p><strong>Art. 3º</strong> — O sistema poderá ser alterado por novos decretos fictícios.</p>
+        </details>
+      </article>
+
+      <article class="lei" data-categoria="Economia">
+        <span class="etiqueta">Decreto nº 002</span>
+        <h3>Fundação do Banco Imperial</h3>
+        <p>Estabelece a instituição financeira fictícia.</p>
+        <details>
+          <summary>Ler decreto completo</summary>
+          <p><strong>Art. 1º</strong> — Fica fundado o Banco Imperial no universo ficcional.</p>
+          <p><strong>Art. 2º</strong> — A instituição organizará relatórios de receitas, despesas e moeda.</p>
+          <p><strong>Art. 3º</strong> — O banco não é uma instituição financeira real.</p>
+        </details>
+      </article>
+
+      <article class="lei" data-categoria="Segurança">
+        <span class="etiqueta">Decreto nº 003</span>
+        <h3>Prevenção contra drogas perigosas</h3>
+        <p>Cria uma política narrativa de prevenção e informação.</p>
+        <details>
+          <summary>Ler decreto completo</summary>
+          <p><strong>Art. 1º</strong> — O Império fictício promoverá informação sobre os riscos das drogas.</p>
+          <p><strong>Art. 2º</strong> — A política priorizará prevenção, educação e apoio às pessoas em dificuldade.</p>
+        </details>
+      </article>
+
+      <article class="lei" data-categoria="Assistência">
+        <span class="etiqueta">Decreto nº 004</span>
+        <h3>Programa Bolsa-Ajuda</h3>
+        <p>Prevê assistência fictícia aos moradores do Império.</p>
+        <details>
+          <summary>Ler decreto completo</summary>
+          <p><strong>Art. 1º</strong> — Fica criado o programa ficcional Bolsa-Ajuda.</p>
+          <p><strong>Art. 2º</strong> — O programa poderá contemplar alimentação, educação e despesas essenciais.</p>
+          <p><strong>Art. 3º</strong> — Os critérios e o orçamento serão definidos em regulamento fictício.</p>
+        </details>
+      </article>
+
+      <article class="lei" data-categoria="Economia">
+        <span class="etiqueta">Decreto nº 005</span>
+        <h3>Contribuição sobre eletrônicos</h3>
+        <p>Registra uma proposta tributária para o cenário imaginário.</p>
+        <details>
+          <summary>Ler decreto completo</summary>
+          <p><strong>Art. 1º</strong> — A contribuição sobre eletrônicos integra apenas a legislação fictícia.</p>
+          <p><strong>Art. 2º</strong> — A narrativa deverá indicar finalidade, cálculo, isenções e destino dos recursos.</p>
+          <p><strong>Art. 3º</strong> — Este documento não autoriza cobranças reais.</p>
+        </details>
+      </article>
+
+      <article class="lei" data-categoria="Economia">
+        <span class="etiqueta">Decreto nº 006</span>
+        <h3>Transparência das taxas</h3>
+        <p>Define regras para publicar as taxas do Império fictício.</p>
+        <details>
+          <summary>Ler decreto completo</summary>
+          <p><strong>Art. 1º</strong> — Cada taxa deverá indicar sua finalidade e forma de cálculo.</p>
+          <p><strong>Art. 2º</strong> — As receitas e despesas imaginárias serão registradas em relatórios públicos.</p>
+        </details>
+      </article>
+
+      <article class="lei" data-categoria="Direitos">
+        <span class="etiqueta">Decreto nº 007</span>
+        <h3>Liberdade religiosa</h3>
+        <p>Protege a diversidade religiosa dentro da história.</p>
+        <details>
+          <summary>Ler decreto completo</summary>
+          <p><strong>Art. 1º</strong> — Nenhuma pessoa poderá ser discriminada por sua religião ou pela ausência de crença.</p>
+          <p><strong>Art. 2º</strong> — A proteção inclui religiões de matriz africana, como a Umbanda e o Candomblé, e todas as demais crenças.</p>
+          <p><strong>Art. 3º</strong> — Divergências devem ser resolvidas com respeito, sem perseguição ou violência.</p>
+        </details>
+      </article>
+
+      <article class="lei" data-categoria="Cultura">
+        <span class="etiqueta">Edital nº 008</span>
+        <h3>Registro de eventos fictícios</h3>
+        <p>Organiza torneios e eventos culturais da narrativa.</p>
+        <details>
+          <summary>Ler edital completo</summary>
+          <p><strong>Art. 1º</strong> — Eventos fictícios, como o KFC 666 — A Batalha dos Exus Gulosos, poderão integrar o calendário cultural da história.</p>
+          <p><strong>Art. 2º</strong> — Cada evento terá regras narrativas e uma descrição de seus participantes.</p>
+        </details>
+      </article>
+
+    </div>
+
+    <p id="semResultados">Nenhum documento encontrado. Tente outra pesquisa.</p>
+  </section>
+
+  <section id="economia">
+    <h2 class="titulo">Economia imperial</h2>
+
+    <div class="grade">
+      <article class="cartao">
+        <h3>Moeda: Cruzel</h3>
+        <p><strong>Nome:</strong> Cruzel</p>
+        <p><strong>Código:</strong> CZL</p>
+        <p>Moeda fictícia usada para transações dentro da história.</p>
+      </article>
+
+      <article class="cartao">
+        <h3>Orçamento imperial</h3>
+        <p>Registro narrativo das receitas, despesas, taxas e investimentos do Império.</p>
+      </article>
+
+      <article class="cartao">
+        <h3>Assistência pública</h3>
+        <p>A Bolsa-Ajuda representa o compromisso fictício de apoiar pessoas em situação de necessidade.</p>
+      </article>
+    </div>
+  </section>
+
+  <section id="sobre">
+    <h2 class="titulo">Sobre o portal</h2>
+    <div class="cartao">
+      <p>Este portal foi criado para reunir a legislação, a economia e as instituições do universo fictício do Império de Dimitri.</p>
+      <p>Os documentos podem ser expandidos com novos artigos, datas, assinaturas fictícias e números de decreto.</p>
+      <p><strong>Versão:</strong> 1.0</p>
+      <p><strong>Natureza:</strong> projeto ficcional.</p>
+    </div>
+  </section>
+
+</main>
+
+<footer>
+  <strong>♛ Império de Dimitri ♛</strong>
+  <p>Arquivo legislativo do universo fictício.</p>
+  <small>Não é um portal governamental oficial e não possui validade jurídica real.</small>
+</footer>
+
+<script>
+  const busca = document.getElementById("busca");
+  const categoria = document.getElementById("categoria");
+  const documentos = [...document.querySelectorAll(".lei")];
+  const mensagem = document.getElementById("semResultados");
+
+  function filtrarDocumentos() {
+    const termo = busca.value.toLocaleLowerCase("pt-BR").trim();
+    const tipo = categoria.value;
+    let quantidade = 0;
+
+    documentos.forEach(documento => {
+      const texto = documento.innerText.toLocaleLowerCase("pt-BR");
+      const correspondeTexto = texto.includes(termo);
+      const correspondeCategoria =
+        tipo === "" || documento.dataset.categoria === tipo;
+      const mostrar = correspondeTexto && correspondeCategoria;
+
+      documento.style.display = mostrar ? "" : "none";
+
+      if (mostrar) quantidade++;
+    });
+
+    mensagem.style.display = quantidade === 0 ? "block" : "none";
+  }
+
+  busca.addEventListener("input", filtrarDocumentos);
+  categoria.addEventListener("change", filtrarDocumentos);
+</script>
+
+</body>
+</html>
